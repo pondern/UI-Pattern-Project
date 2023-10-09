@@ -35,7 +35,7 @@ function displayImages(images){
     images.forEach(img => {
         if (img.primaryImage) {
             let html = `
-                <div>
+                <div class="images">
                     <img src="${img.primaryImage}" alt="${img.title}" />
                 </div>
             `
@@ -43,7 +43,48 @@ function displayImages(images){
             container.insertAdjacentHTML("beforeend", html)
         }
     })
+
+    const imageDivs = document.querySelectorAll(".images")
+
+    imageDivs.forEach((imageDivsDiv, i) => {
+        imageDivsDiv.addEventListener("click", (e) => handleClick(e, images[i]))
+    })
 }
+
+function handleClick(e, artpiece){
+    console.log(artpiece)
+    let divContainer = document.querySelector(".modal-info")
+    divContainer.innerHTML = ""
+
+    let divInfo = `
+        <div class="cool">
+            <h2>Display Bio: ${artpiece.artistDisplayBio}</h2>
+            <p>Artist Name: ${artpiece.artistDisplayName}</p>
+            <p>Artist Nationality: ${artpiece.artistNationality}</p>
+            <p>Dimensions: ${artpiece.dimensions}</p>
+        </div>
+    `
+  
+    divContainer.insertAdjacentHTML("beforeend", divInfo);
+    openModal()
+}
+// function handleClick(e){
+//     const id = e.target.dataset.id
+//     fetch(`${baseURL}/${id}`)
+//     .then((res) => res.json())
+//     .then((res) => {
+//         console.log(res)
+//         const modalTitle = document.querySelector("#modal-title")
+//         const modalImg = document.querySelector("#modal-image")
+//         const descriptionPTage = document.querySelector("#modal-description")
+
+//         modalTitle.innerText = res.name
+//         modalImg.src = res.image
+//         descriptionPTage.innerText = res.status
+//         openModal()
+//     })
+// }
+
 
 const openModal = () => {
     const modal = document.getElementById('myModal')
@@ -55,39 +96,4 @@ const openModal = () => {
     modal.style.display = 'none'
   }
 
-  const processArtData = (data) => {
-    const charactersArr = data.results
-
-    charactersArr.forEach((character)=>{
-        const characterHTML = `
-            <div class="character">
-                <img src="${character.image}" alt="${character.name}" data-id="${character.id}">
-            </div>
-        `
-
-        charactersContainer.insertAdjacentHTML("beforeend", characterHTML)
-    })
-
-    const characterDivs = document.querySelectorAll(".character")
-
-    characterDivs.forEach((characterDiv) => {
-        characterDiv.addEventListener("click", handleClick)
-    })
-}
-
-function handleClick(e){
-    const id = e.target.dataset.id
-    fetch(`${baseURL}/${id}`)
-    .then((res) => res.json())
-    .then((res) => {
-        console.log(res)
-        const modalTitle = document.querySelector("#modal-title")
-        const modalImg = document.querySelector("#modal-image")
-        const descriptionPTage = document.querySelector("#modal-description")
-
-        modalTitle.innerText = res.name
-        modalImg.src = res.image
-        descriptionPTage.innerText = res.status
-        openModal()
-    })
-}
+ 
