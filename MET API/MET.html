@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./MET.css"/>
+    <script src="./MET.js" defer></script>
+</head>
+<body> 
+    <form class="input-form">
+        <label for="input">Search for art!</label>
+        <input type="text" id="input" name="search" />
+        <button type="submit">Enter</button>
+    </form>     
+  
+    <div class="images-container flex"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content" display="flex">
+        <div>
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1 id="modal-title"></h1>
+            <p id="modal-description"></p>
+            
+           </div>
+        </div>
+    </div>
+    
+</body>
+</html>
