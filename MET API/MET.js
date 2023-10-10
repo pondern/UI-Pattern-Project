@@ -58,32 +58,18 @@ function handleClick(e, artpiece){
 
     let divInfo = `
         <div class="cool">
-            <h2>Display Bio: ${artpiece.artistDisplayBio}</h2>
+          <img src="${artpiece.primaryImage}"</img>
             <p>Artist Name: ${artpiece.artistDisplayName}</p>
             <p>Artist Nationality: ${artpiece.artistNationality}</p>
             <p>Dimensions: ${artpiece.dimensions}</p>
+            <p>Department: ${artpiece.department}</p>
+            <p>Medium: ${artpiece.medium}</p>
         </div>
     `
   
     divContainer.insertAdjacentHTML("beforeend", divInfo);
     openModal()
 }
-// function handleClick(e){
-//     const id = e.target.dataset.id
-//     fetch(`${baseURL}/${id}`)
-//     .then((res) => res.json())
-//     .then((res) => {
-//         console.log(res)
-//         const modalTitle = document.querySelector("#modal-title")
-//         const modalImg = document.querySelector("#modal-image")
-//         const descriptionPTage = document.querySelector("#modal-description")
-
-//         modalTitle.innerText = res.name
-//         modalImg.src = res.image
-//         descriptionPTage.innerText = res.status
-//         openModal()
-//     })
-// }
 
 
 const openModal = () => {
@@ -96,4 +82,5 @@ const openModal = () => {
     modal.style.display = 'none'
   }
 
+ 
  

@@ -47,7 +47,7 @@ function handleClick(e){
 
         modalTitle.innerText = res.name
         modalImg.src = res.image
-        descriptionPTage.innerText = res.status
+        descriptionPTage.innerText = res.species
         openModal()
     })
 }
